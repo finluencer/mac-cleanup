@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # mac_cleanup.sh — Interactive Mac Disk Cleanup Tool
-# Repo:    https://github.com/YOUR_USERNAME/mac-cleanup
-# Run:     curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/mac-cleanup/main/mac_cleanup.sh | bash
+# Repo:    https://github.com/finluencer/mac-cleanup
+# Run:     curl -fsSL https://raw.githubusercontent.com/finluencer/mac-cleanup/refs/heads/main/mac_cleanup.sh | bash
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -57,7 +57,7 @@ show_disk_status() {
 
 ask() {
   echo -ne "${YELLOW}  → $1 [y/N]: ${RESET}"
-  read -r ans
+  read -r ans < /dev/tty
   [[ "$ans" =~ ^[Yy]$ ]]
 }
 
@@ -245,7 +245,7 @@ main() {
   show_disk_status
   echo -e "  This tool will walk you through safe cleanup steps.\n"
   echo -ne "  ${BOLD}Press Enter to start...${RESET}"
-  read -r
+  read -r < /dev/tty
 
   step_timemachine
   step_trash
